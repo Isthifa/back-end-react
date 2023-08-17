@@ -2,7 +2,6 @@ package com.example.reactcrud.service;
 
 import com.example.reactcrud.entity.Employee;
 import com.example.reactcrud.repository.EmployeeRepo;
-import com.example.reactcrud.service.Services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +35,7 @@ public class ServiceImpl implements Services {
     @Override
     public void deleteEmployee(Integer id) {
         List<Employee> employee=employeeRepo.findAll();
-        employee.stream().filter(e->e.getId()==id).forEach(e->employeeRepo.delete(e));
+        employee.stream().filter(e->e.getId()==id).forEach(employeeRepo::delete);
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.example.reactcrud.controller;
 import com.example.reactcrud.entity.Employee;
 import com.example.reactcrud.service.Services;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
@@ -23,7 +25,7 @@ public class UserController {
 
     @PostMapping("/save")
     public Employee saveEmployee(@RequestBody Employee employee){
-        System.out.println(employee.getSalary());
+        log.info("Employee saved");
         return services.saveEmployee(employee);
     }
 
